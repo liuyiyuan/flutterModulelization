@@ -1,12 +1,19 @@
+import 'package:flutteframe/config/get_it_config.dart';
 import 'package:flutteframe/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_common/flutter_common.dart';
 import 'package:flutter_modulea/IRoutesImpl.dart';
 import 'package:flutter_moduleb/IRoutesImpl.dart';
+import 'package:flutter_modulea/config/config_ma.dart' as ma;
+import 'package:flutter_moduleb/config/config_mb.dart' as mb;
 
 import 'package:get/get.dart';
 
 void main() {
+  configureMainDps();
+  ma.configureModuleADps();
+  mb.configureModulBDps();
+
   runApp(MyApp());
 }
 
@@ -22,7 +29,7 @@ class MyApp extends StatelessWidget {
       home: MainPage(),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
-      onInit: (){
+      onInit: () {
         if (!ARouter.getInstance.isInit()) {
           ARouter.getInstance.addRoutes(ITestRoutesImpl());
           ARouter.getInstance.addRoutes(ITest2RoutesImpl());
@@ -39,12 +46,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-
   @override
   void initState() {
-
     super.initState();
-
   }
 
   @override
@@ -53,11 +57,11 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: Text("route"),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
+      floatingActionButton: FloatingActionButton(onPressed: () {
         //  Navigator.of(context).pushNamed(RouteName.home);
-       RouteUtils.navigation<ITestModelService>(RouteName.testProvider).goPage(context);
+        RouteUtils.navigation<ITestModelService>(RouteName.testProvider)
+            .goPage(context);
       }),
     );
   }
 }
-
