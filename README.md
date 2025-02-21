@@ -12,11 +12,12 @@
 
 
 **监控模块代码实时动态生成cmd**
-1 cd 到模块的目录下(子模块必须cd到自己的目录下)；
-2 执行命令：flutter packages pub run build_runner watch
 
-**melos 多模块联合编译指令 **
-1 melos run build
+    1 cd 到模块的目录下(子模块必须cd到自己的目录下)；
+    2 执行命令：flutter packages pub run build_runner watch
+
+**melos 多模块联合编译指令**
+    1 melos run build
  
  
  
